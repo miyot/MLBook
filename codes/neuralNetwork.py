@@ -3,6 +3,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pylab as plt
 import pdb
+import matplotlib.ticker as ptick
+
+plt.rcParams['font.family'] = 'sans-serif'#使用するフォント
+plt.rcParams['font.sans-serif'] = ['Hiragino Maru Gothic Pro', 'Yu Gothic', 'Meirio', 'Takao', 'IPAexGothic', 'IPAPGothic', 'VL PGothic', 'Noto Sans CJK JP']
+plt.rcParams['xtick.direction'] = 'in'#x軸の目盛線が内向き('in')か外向き('out')か双方向か('inout')
+plt.rcParams['ytick.direction'] = 'in'#y軸の目盛線が内向き('in')か外向き('out')か双方向か('inout')
+plt.rcParams['xtick.major.width'] = 1.0#x軸主目盛り線の線幅
+plt.rcParams['ytick.major.width'] = 1.0#y軸主目盛り線の線幅
+plt.rcParams['font.size'] = 8 #フォントの大きさ
+plt.rcParams['axes.linewidth'] = 0.5# 軸の線幅edge linewidth。囲みの太さ
 
 # クラス
 class neuralNetwork():
@@ -374,8 +384,8 @@ class neuralNetwork():
         plt.close()
         
         # 真値のプロット（クラスごとにマーカーを変更）
-        plt.plot(X[Y[:,0]==0,0],X[Y[:,0]==0,1],'cx',markerSize=14,label="ラベル0")
-        plt.plot(X[Y[:,0]==1,0],X[Y[:,0]==1,1],'m.',markerSize=14,label="ラベル1")
+        plt.plot(X[Y[:,0]==0,0],X[Y[:,0]==0,1],'cx',markersize=14,label="ラベル0")
+        plt.plot(X[Y[:,0]==1,0],X[Y[:,0]==1,1],'m.',markersize=14,label="ラベル1")
 
         # 予測値のメッシュの計算
         X1,X2 = plt.meshgrid(plt.linspace(np.min(X[:,0]),np.max(X[:,0]),50),plt.linspace(np.min(X[:,1]),np.max(X[:,1]),50))
@@ -393,9 +403,9 @@ class neuralNetwork():
         # 各軸の範囲とラベルの設定
         plt.xlim([np.min(X[:,0]),np.max(X[:,0])])
         plt.ylim([np.min(X[:,1]),np.max(X[:,1])])
-        plt.title(title,fontSize=14)
-        plt.xlabel(xLabel,fontSize=14)
-        plt.ylabel(yLabel,fontSize=14)
+        plt.title(title,fontsize=14)
+        plt.xlabel(xLabel,fontsize=14)
+        plt.ylabel(yLabel,fontsize=14)
         plt.legend()
 
         # グラフの表示またはファイルへの保存
@@ -419,8 +429,8 @@ class neuralNetwork():
         plt.plot(teEval,'r',label="評価")
         
         # 各軸の範囲とラベルの設定
-        plt.xlabel("反復",fontSize=14)
-        plt.ylabel(ylabel,fontSize=14)
+        plt.xlabel("反復",fontsize=14)
+        plt.ylabel(ylabel,fontsize=14)
         plt.ylim([0,1.1])
         plt.legend()
         
